@@ -1,0 +1,50 @@
+version: '3.7'
+
+services:
+  # ELK STACK
+  elasticsearch:
+    image: elasticsearch:7.14.1
+    restart: on-failure
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: '-Xms512m -Xmx512m'
+    volumes:
+      - type: volume
+        source: elasticsearch_data
+        target: /usr/share/elasticsearch/data
+    networks:
+      - elk_net
+    ports: 
+      - 9200:9200 
+
+  logstash:
+    image: logstash:7.14.1
+    restart: on-failure
+    environment:
+      LS_JAVA_OPTS: '-Xmx256m -Xms256m'
+      OPENWEATHERMAP_APPID: 688e7f4550ff2be7bd00305c42fbe051
+    volumes:
+    - type: bind
+      source: ./logstash/pipelines.yml
+      target: /usr/share/logstash/config/pipelines.yml
+    - type: bind
+      source: ./logstash/pipelines
+      target: /usr/share/logstash/pipelines
+    networks:
+      - elk_net
+
+  kibana:
+    image: kibana:7.14.1
+    depends_on:
+      - elasticsearch
+    restart: on-failure
+    networks:
+      - elk_net
+    ports:
+      - 5601:5601
+
+networks:
+  elk_net:
+
+volumes:
+  elasticsearch_data:
