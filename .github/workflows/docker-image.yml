@@ -13,5 +13,5 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       - name: Check out code
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USER }} --password-stdin
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
     
