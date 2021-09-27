@@ -8,7 +8,6 @@ env:
   
 jobs:
   build-container:
-    name: Push Docker image to Docker Hub( build docker container image )
     runs-on: ubuntu-latest
     steps:
       -name: checkout repository
@@ -17,9 +16,9 @@ jobs:
       -name: login
        uses: docker/login-in.action@v1
        with:
-        registry: ${{ env.REGISTRY }}
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
+         registry: ${{ env.REGISTRY }}
+         username: ${{github.actor}}
+         password: ${{secrets.GITHUB_TOKEN}}
 
 
       
