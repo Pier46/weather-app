@@ -21,7 +21,7 @@ jobs:
     - name: test
       uses: docker/metadata-action@v3
       with:
-        image: pier46/logstash-custom
+        images: pier46/logstash-custom
 
     - name: change 
       run: |
