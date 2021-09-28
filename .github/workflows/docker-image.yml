@@ -18,17 +18,13 @@ jobs:
       run: |
        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
-    - name: test
-      uses: docker/metadata-action@v3
-      with:
-        images: pier46/logstash-custom
-
     - name: build
       uses: docker/build-push-action@v2
       with:
         context: ./logstash
         file: ./logstash/Dockerfile
-        load: true
+        push: true
+        tags: pier46/logstash
     
 
 
