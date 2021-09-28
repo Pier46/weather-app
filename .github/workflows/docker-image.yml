@@ -23,10 +23,12 @@ jobs:
       with:
         images: pier46/logstash-custom
 
-    - name: change 
-      run: |
-        docker push pier46/logstash-custom:latest
-
+    - name: build
+      uses: ./
+      with:
+        context: ./logstash
+        file: ./logstash/Dockerfile
+        load: true
     
 
 
