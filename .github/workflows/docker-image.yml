@@ -17,14 +17,17 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD}}
       run: |
        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    
+
+    - name: test
+      uses: docker/metadata-action@v3
+      with:
+        image: pier46/logstash-custom
+
     - name: change 
       run: |
-        cd /home/pier/weather-app
-    - name: build
-      run: |  
-        docker build -f Dockerfile
-   
+        docker push pier46/logstash-custom:latest
+
+    
 
 
     
