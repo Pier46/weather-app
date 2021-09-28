@@ -20,7 +20,7 @@ jobs:
     
     - name: change 
       run: |
-        cd weather-app
+        cd /home/pier/weather-app
     - name: build
       run: |  
         docker build -f Dockerfile
