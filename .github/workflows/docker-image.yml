@@ -19,12 +19,11 @@ jobs:
        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     
     - name: Build and push Docker image
-      uses: Docker/build-push-action@v2
+      uses: docker/build-push-action@v2
       with:
-        context: ./
-        file: Dockerfile
+        context: .
         push: true
-        tags: logstash-custom:latest
+        tags: pier46/logstash-custom:latest
 
 
     
