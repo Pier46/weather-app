@@ -17,8 +17,6 @@ jobs:
        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build and push Docker image
       uses: docker/build-push-action@v1
-      with:
-        context: .
-        push: true
+      
 
     
