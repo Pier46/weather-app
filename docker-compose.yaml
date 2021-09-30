@@ -18,7 +18,7 @@ services:
       - 9200:9200 
 
   logstash:
-    build: ./logstash
+    image: logstash:7.14.1
     restart: on-failure
     environment:
       LS_JAVA_OPTS: '-Xmx256m -Xms256m'

@@ -24,7 +24,7 @@ jobs:
         context: ./logstash
         file: ./logstash/Dockerfile
         push: true
-        tags: pier46/logstash
+        tags: pier46/logstash-custom
     
 
 
